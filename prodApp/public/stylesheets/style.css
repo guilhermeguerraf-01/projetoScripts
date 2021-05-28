@@ -14,7 +14,7 @@ body {
 
 .navbar {
     box-sizing: border-box;
-    width: 310px;
+    width: 300px;
     height: 100vh;
     padding: 25px 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -146,6 +146,7 @@ body {
 .conteudoPrincipal-cabecalho {
     padding: 0 30px 20px 30px;
     border-bottom: 1px solid #dfdfdf;
+    position: relative;
 }
 
 .conteudoPrincipal-titulo {
@@ -188,8 +189,8 @@ body {
 }
 
 .botao-addProduto:hover {
-    background: rgb(86, 208, 67);
-    border-color: rgb(86, 208, 67);
+    background: rgb(72, 195, 50);
+    border-color: rgb(72, 195, 50);
     color: #f8faf8;
 }
 
@@ -332,7 +333,9 @@ body {
 .modal-container {
     width: 100vw;
     height: 100vh;
-    position: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
     display: none;
     justify-content: center;
     align-items: center;
@@ -399,6 +402,7 @@ body {
 .form-cadastroProduto .form-label{
     display: block;
     margin-bottom: 8px;
+    font-size: 1.1em;
 }
 
 .form-cadastroProduto .form-input {
