@@ -1,22 +1,28 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
-var ProdutoSchema = new Schema(
-{
-	nome: { type: String, required: true },
-	codigo: { type: String, required: true },
-	desc: { type: String },
+var ProdutoSchema = new mongoose.Schema({
+	nome: {
+		type: String,
+		required: true
+	},
+	codigo: {
+		type: String,
+		required: true
+	},
+	precoVenda: {
+		type: double,
+		required: true
+	},
+	dataCadastro: {
+		type: Date,
+		required: true
+	}
 });
 
-// Campo virtual para o nome completo
-ProdutoSchema.virtual('nome').get(function() {
-	return this.nome;
+ProdutoSchema.virtual('url').get(function () {
+	return '/produtos/' + this._id;
 });
 
-// Campo virtual para o tempo de vida do autor
-ProdutoSchema.virtual('codigo').get(function() {
-	return this.codigo;
-});
+const Produto = mongoose.model('Produto', ProdutoSchema);
 
-// Gera o modelo
-module.exports = mongoose.model('Produto', ProdutoSchema);
+module.exports = Produto;

@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
 
-var produto_controller = require('../controllers/produtoController');
+const router = express.Router();
+
+const produto_controller = require('../controllers/produtoController');
 
 router.get('/', produto_controller.index);
+
+router.post('/produtos/create', produto_controller.produto_create_post);
 
 
 module.exports = router;
