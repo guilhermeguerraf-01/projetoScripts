@@ -20,7 +20,7 @@ var ProdutoSchema = new mongoose.Schema({
 });
 
 ProdutoSchema.virtual('url').get(function () {
-	return '/produtos/' + this._id;
+	return '/produtos/produto/' + this._id;
 });
 
 const Produto = mongoose.model('Produto', ProdutoSchema);
