@@ -10,7 +10,7 @@ var ProdutoSchema = new mongoose.Schema({
 		required: true
 	},
 	precoVenda: {
-		type: double,
+		type: Number,
 		required: true
 	},
 	dataCadastro: {

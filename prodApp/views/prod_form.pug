@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  .container
+        h2.cabecalho
+            | Cadastro de produto
+        form.form-cadastroProduto(method='POST' action='')
+            label.form-label(for='nome') Nome do produto:
+            input#nome.form-input(type='text' name='nome' required='true' value=(undefined===produto ? '' : produto.nome))
+
+            label.form-label(for='codigo') C&oacute;digo Interno:
+            input#codigo.form-input(type='text' name='codigo' required='true' value=(undefined===produto ? '' : produto.codigo))
+            
+            label.form-label(for='precoVenda') Preço de venda:
+            input#precoVenda.form-input(type="text" name='precoVenda' required='true' value=(undefined===produto ? '' : produto.precoVenda))
+            
+            label.form-label(for="dataCadastro") Data de cadastro:
+            input#dataCadastro.form-input(type="date" name='dataCadastro' required='true' value=(undefined===produto ? '' : produto.dataCadastro))
+
+            input#botao-gravar.form-botao-gravar(type='submit' value='Cadastrar')
+        
+        if errors
+            ul
+                for error in errors
+                    li!= error.msg

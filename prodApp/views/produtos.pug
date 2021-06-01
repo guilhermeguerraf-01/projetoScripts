@@ -6,10 +6,11 @@ block content
       h1.conteudoPrincipal-titulo Produtos
     main.conteudoPrincipal
       .menu-lista
-        button.botao-padrao.botao-addProduto(onclick="mostrarModal('modal-cadastrarProduto')")
-          svg.bi.bi-plus-circle-fill(xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewbox='0 0 16 16')
-            path(d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z')
-          |                     Adicionar Produtos
+        a(href='/produtos/produto/create')
+          button.botao-padrao.botao-addProduto
+            svg.bi.bi-plus-circle-fill(xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewbox='0 0 16 16')
+              path(d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z')
+            |                     Adicionar Produtos
         form.form-buscarProduto
           .form-campoBusca
             svg.bi.bi-search(xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewbox='0 0 16 16')
@@ -65,28 +66,3 @@ block content
                 svg.bi.bi-trash-fill(xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewbox='0 0 16 16')
                   path(d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z')
                 |                                 Excluir
-
-  #modal-cadastrarProduto.modal-container
-    .modal
-      button.modal-fechar x
-      h2.cabecalho
-        | Cadastro de produto
-      form.form-cadastroProduto(method='POST' action='/produtos')
-        label.form-label(for='nome') Nome do produto:
-        input#nome.form-input(type='text')
-
-        label.form-label(for='codigo') C&oacute;digo Interno:
-        input#codigo.form-input(type='text')
-        
-        label.form-label(for='precoVenda') Preço de venda:
-        input#precoVenda.form-input(type="text")
-        
-        label.form-label(for="dataCadastro") Data de cadastro:
-        input#dataCadastro.form-input(type="date")
-
-        input#botao-gravar.form-botao-gravar(type='submit' value='Cadastrar')
-      
-      if errors
-        ul
-          for error in errors
-            li!= error.msg

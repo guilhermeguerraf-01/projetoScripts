@@ -1,3 +1,5 @@
+const Produto = require('../models/produto');
+
 const async = require('async');
 
 const { body,validationResult } = require('express-validator');
@@ -5,6 +7,35 @@ const { body,validationResult } = require('express-validator');
 exports.index = function(req, res) {
     async.parallel({}, function(err, results) {
         res.render('produtos', { title: 'Produtos', error: err, data: results });
+    });
+};
+
+exports.produto_detalhes = function(req, res, next) {
+    async.parallel({
+        produto: function(callback) {
+            Produto.findById(req.params.id).exec(callback);
+        },
+
+    }, function(err, results) {
+        if (err) return next(err);
+
+        if (results.produto == null) {
+            var err = new Error('Produto não encontrado');
+
+            err.status = 404;
+            return next(err);
+        }
+
+        res.render('produto_detalhe');
+    });
+
+};
+
+exports.produto_create_get = function(req, res, next) {
+    async.parallel({}, function(err, results) {
+        if (err) return next(err);
+
+        res.render('prod_form', { title: 'Cadastrar Produto' });
     });
 };
 
@@ -28,7 +59,7 @@ exports.produto_create_post = [
             async.parallel({}, function(err) {
                 if (err) return next(err);
 
-                res.render('produtos', { title: 'Cadastrar Produto', produto: produto, errors: errors.array() });
+                res.render('prod_form', { title: 'Cadastrar Produto', produto: produto, errors: errors.array() });
             });
 
             return;
