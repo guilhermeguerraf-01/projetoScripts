@@ -2,15 +2,14 @@ const express = require('express');
 
 const router = express.Router();
 
-const produto_controller = require('../controllers/produtoController');
+const produtoController = require('../controllers/produtoController');
 
-router.get('/', produto_controller.index);
+router.get('/', produtoController.index);
 
-router.get('/cadastro', produto_controller.produto_cadastro_get);
-router.post('/cadastro', produto_controller.produto_cadastro_post);
+router.post('/cadastro', produtoController.cadastrar);
 
-router.get('/:id', produto_controller.produto_detalhes);
+router.get('/:id', produtoController.produto_detalhes);
 
-router.get('/produtos', produto_controller.produto_lista);
+router.get('/produtos', produtoController.listar);
 
 module.exports = router;
