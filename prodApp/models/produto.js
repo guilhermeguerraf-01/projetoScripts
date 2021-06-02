@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var ProdutoSchema = new mongoose.Schema({
+var ProdutoSchema = new Schema({
 	nome: {
 		type: String,
 		required: true
@@ -20,7 +21,7 @@ var ProdutoSchema = new mongoose.Schema({
 });
 
 ProdutoSchema.virtual('url').get(function () {
-	return '/produtos/produto/' + this._id;
+	return '/produtos/' + this._id;
 });
 
 const Produto = mongoose.model('Produto', ProdutoSchema);

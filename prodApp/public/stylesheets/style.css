@@ -14,7 +14,7 @@ body {
 
 .navbar {
     box-sizing: border-box;
-    width: 300px;
+    width: 22vw;
     height: 100vh;
     padding: 25px 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -139,7 +139,7 @@ body {
 
 .container {
     box-sizing: border-box;
-    width: 100%;
+    width: 78vw;
     padding: 30px 50px;
 }
 
@@ -161,6 +161,10 @@ body {
     border-bottom: 1px solid #dfdfdf;
     display: flex;
     justify-content: space-between;
+}
+
+.menu-lista a {
+    text-decoration: none;
 }
 
 .botao-padrao {

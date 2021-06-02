@@ -6,10 +6,11 @@ const produto_controller = require('../controllers/produtoController');
 
 router.get('/', produto_controller.index);
 
-router.get('/produto/create', produto_controller.produto_create_get);
-router.post('/produto/create', produto_controller.produto_create_post);
+router.get('/cadastro', produto_controller.produto_cadastro_get);
+router.post('/cadastro', produto_controller.produto_cadastro_post);
 
-router.get('/produto/:id', produto_controller.produto_detalhes);
+router.get('/:id', produto_controller.produto_detalhes);
 
+router.get('/', produto_controller.produto_lista);
 
 module.exports = router;

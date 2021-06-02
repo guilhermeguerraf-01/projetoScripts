@@ -2,3 +2,10 @@ extends layout
 
 block content
   .container
+    header.conteudoPrincipal-cabecalho
+      h1.conteudoPrincipal-titulo Detalhes de Produto
+    main.conteudoPrincipal
+      p Nome: #{produto.nome}
+      p Codigo: #{produto.codigo}
+      p Preço de Venda: R$ #{produto.precoVenda}
+      p Data de Cadastro: #{produto.dataCadastro}

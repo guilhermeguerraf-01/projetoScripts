@@ -3,6 +3,7 @@ const Produto = require('../models/produto');
 const async = require('async');
 
 const { body,validationResult } = require('express-validator');
+const { model } = require('mongoose');
 
 exports.index = function(req, res) {
     async.parallel({}, function(err, results) {
@@ -10,10 +11,18 @@ exports.index = function(req, res) {
     });
 };
 
+exports.produto_lista = function(req, res, next) {
+    Produto.find({}, function(err, produtos) {
+        if (err) return next(err);
+        
+        res.render('produtos', { title: 'Produtos', produtos: produtos });
+    });
+};
+
 exports.produto_detalhes = function(req, res, next) {
     async.parallel({
         produto: function(callback) {
-            Produto.findById(req.params.id).exec(callback);
+            Produto.findById(req.params.id);
         },
 
     }, function(err, results) {
@@ -26,12 +35,12 @@ exports.produto_detalhes = function(req, res, next) {
             return next(err);
         }
 
-        res.render('produto_detalhe');
+        res.render('produto_detalhe', { title: 'Detalhes', produto });
     });
 
 };
 
-exports.produto_create_get = function(req, res, next) {
+exports.produto_cadastro_get = function(req, res, next) {
     async.parallel({}, function(err, results) {
         if (err) return next(err);
 
@@ -39,7 +48,7 @@ exports.produto_create_get = function(req, res, next) {
     });
 };
 
-exports.produto_create_post = [
+exports.produto_cadastro_post = [
     body('nome', 'Nome é um campo obrigatório.').trim().isLength({ min: 1 }).escape(),
     body('codigo', 'Codigo é um campo obrigatório.').trim().isLength({ min: 1 }).escape(),
     body('precoVenda', 'Preço de Venda é um campo obrigatório.').trim().isLength({ min: 1 }).escape(),
@@ -67,7 +76,7 @@ exports.produto_create_post = [
             produto.save(function (err) {
                 if (err) return next(err);
 
-                res.redirect(produto.url);
+                res.redirect('/produtos');
             });
         }
     }
