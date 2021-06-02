@@ -11,6 +11,6 @@ router.post('/cadastro', produto_controller.produto_cadastro_post);
 
 router.get('/:id', produto_controller.produto_detalhes);
 
-router.get('/', produto_controller.produto_lista);
+router.get('/produtos', produto_controller.produto_lista);
 
 module.exports = router;
