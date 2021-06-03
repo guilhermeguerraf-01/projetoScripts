@@ -178,6 +178,7 @@ body {
     background: transparent;
     font-size: 0.9em;
     cursor: pointer;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4);
     transition: 0.2s;
 }
 
@@ -239,6 +240,8 @@ body {
 
 .conteudoPrincipal-tabela {
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
 }
 
 .tabela-cabecalho {
@@ -267,11 +270,17 @@ body {
 }
 
 .tabela-item {
+    background-color: #ffffff;
     border-bottom: 1px solid #dfdfdf;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tabela-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .tabela-item td {
-    padding: 15px 5px;
+    padding: 15px 10px;
     text-align: left;
 }
 /*
@@ -295,6 +304,12 @@ body {
 */
 .item-nome {
     font-weight: bold;
+}
+
+.item-nome a {
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .item-codigo {
