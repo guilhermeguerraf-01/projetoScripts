@@ -12,7 +12,8 @@ exports.listar = async (req, res) => {
 exports.mostrarProduto = async (req, res) => {
     const produto = await Produto.findById(req.params.id);
 
-    res.send({ produto });
+    // return res.send({ produto });
+    res.render("produto_detalhe", { produto: produto });
 };
 
 exports.cadastrar = async (req, res) => {
