@@ -7,14 +7,16 @@
 body {
     background-color: #f8faf8;
     display: flex;
+    overflow-x: hidden;
 }
 
 
 /* NAVBAR */
 
 .navbar {
+    position: fixed;
     box-sizing: border-box;
-    width: 22vw;
+    width: 20vw;
     height: 100vh;
     padding: 25px 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -139,8 +141,9 @@ body {
 
 .container {
     box-sizing: border-box;
-    width: 78vw;
+    width: 80vw;
     padding: 30px 50px;
+    margin-left: 20vw;
 }
 
 .conteudoPrincipal-cabecalho {
@@ -250,7 +253,7 @@ body {
     padding: 13px 5px;
     text-align: left;
 }
-
+/*
 .tabela-cabecalho th:first-child {
     padding-left: 15px;
 }
@@ -258,7 +261,7 @@ body {
 .tabela-cabecalho th:last-child {
     padding-right: 15px;
 }
-
+*/
 .tabela-corpo {
     width: 100%;
 }
@@ -271,7 +274,7 @@ body {
     padding: 15px 5px;
     text-align: left;
 }
-
+/*
 .tabela-item td:first-child {
     width: 180px;
     padding-left: 15px;
@@ -289,7 +292,7 @@ body {
     width: 180px;
     padding-right: 15px;
 }
-
+*/
 .item-nome {
     font-weight: bold;
 }
@@ -301,6 +304,10 @@ body {
 .item-opcoes {
     display: flex;
     justify-content: space-between;
+}
+
+.invisivel {
+	display: none;
 }
 
 

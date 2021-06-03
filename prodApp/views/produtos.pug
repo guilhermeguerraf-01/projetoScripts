@@ -9,18 +9,27 @@ block content
         button.botao-padrao.botao-addProduto(onclick="mostrarModal('modal-cadastrarProduto')")
           svg.bi.bi-plus-circle-fill(xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewbox='0 0 16 16')
             path(d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z')
-          |                     Adicionar Produtos
+          |                     Cadastrar Produtos
         form.form-buscarProduto
           .form-campoBusca
+            input#buscar-produto.input-busca(type='text' name='' placeholder='Buscar...')
             svg.bi.bi-search(xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewbox='0 0 16 16')
               path(d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z')
-            input#input-busca.input-busca(type='text' name='' placeholder='Buscar...')
-          button.form-botaoBuscar(type='submit') Buscar
-
-    ul
-      each produto in produtos
-        li
-          a(href=produto.url)= produto
+      table.conteudoPrincipal-tabela
+        thead.tabela-cabecalho
+          tr
+            th Nome do Produto
+            th C&oacute;digo
+            th Preço de Venda
+            th Data de Cadastro
+        tbody.tabela-corpo
+          each produto in produtos
+            tr.tabela-item
+              td.item-nome.info-nome
+                a(href=produto.url)= produto.nome
+              td.item-codigo.info-codigo= produto.codigo
+              td.item-codigo= produto.precoVenda
+              td.item-codigo= produto.dataCadastro
 
   #modal-cadastrarProduto.modal-container
     .modal
@@ -41,3 +50,5 @@ block content
         input#dataCadastro.form-input(type="date" name='dataCadastro' required='true' value=(undefined===produto ? '' : produto.dataCadastro))
 
         input#botao-gravar.form-botao-gravar(type='submit' value='Cadastrar')
+
+  script(src='/javascripts/buscarProduto.js')
