@@ -6,7 +6,7 @@ block content
       h1.conteudoPrincipal-titulo Detalhes de Produto
     main.conteudoPrincipal
       .produto-detalhes
-        p Nome: #{produto.nome}
-        p Codigo: #{produto.codigo}
-        p Preço de Venda: R$ #{produto.precoVenda}
-        p Data de Cadastro: #{produto.dataCadastro}
+        h2 #{produto.nome}
+        p Codigo Interno: #{produto.codigo}
+        p Preço de Venda: R$ #{produto.precoVenda.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+        p Data de Cadastro: #{produto.dataCadastro.toLocaleDateString('pt-Br', { dateStyle: 'short' })}
