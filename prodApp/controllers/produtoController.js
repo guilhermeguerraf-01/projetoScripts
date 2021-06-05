@@ -24,7 +24,14 @@ exports.cadastrar = async (req, res) => {
         dataCadastro: req.body.dataCadastro
     });
 
-    produto.save().then(data => { res.send(data); }).catch(err => { res.status(500).send(err); });
+    produto
+        .save(produto)
+        .then(data => {
+            res.send(data); 
+        })
+        .catch(err => {
+            res.status(500).send(err);
+        });
     //return res.send({ produto });
     res.redirect('/produtos');
 };
@@ -38,5 +45,6 @@ exports.atualizar = async (req, res) => {
 exports.deletar = async (req, res) => {
     await Produto.findByIdAndRemove(req.params.id);
 
-    res.send();
+    //res.send();
+    res.redirect('/produtos');
 };
