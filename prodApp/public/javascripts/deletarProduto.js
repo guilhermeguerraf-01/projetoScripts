@@ -11,5 +11,5 @@ botaoExcluir.forEach(botao => {
         xhr.send(null);
         
         location.reload();
-    })
-})
+    });
+});
