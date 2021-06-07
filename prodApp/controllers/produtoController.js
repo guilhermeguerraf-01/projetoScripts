@@ -1,19 +1,17 @@
 const Produto = require('../models/produto');
 
-const async = require('async');
-
 exports.listar = async (req, res) => {
     const produtos = await Produto.find();
 
-    //return res.send({ produtos });
-    res.render("produtos", { produtos: produtos });
+    res.send({ produtos });
+    //res.render("produtos", { produtos: produtos });
 };
 
 exports.mostrarProduto = async (req, res) => {
     const produto = await Produto.findById(req.params.id);
 
-    // return res.send({ produto });
-    res.render("produto_detalhe", { produto: produto });
+    res.send({ produto });
+    //res.render("produto_detalhe", { produto: produto });
 };
 
 exports.cadastrar = async (req, res) => {
@@ -32,19 +30,38 @@ exports.cadastrar = async (req, res) => {
         .catch(err => {
             res.status(500).send(err);
         });
-    //return res.send({ produto });
-    res.redirect('/produtos');
+    
+    res.send({ produto });
+    //res.redirect('/produtos');
 };
 
 exports.atualizar = async (req, res) => {
-    const produto = await Produto.findById(req.params.id);
+    Produto.findById(req.params.id, function(err, produto) {
+        
+        if(err) res.send(TypeError);
 
-    res.send({ produto });
+        produto.nome = req.body.nome;
+        produto.codigo = req.body.codigo;
+        produto.precoVenda = req.body.precoVenda;
+        produto.dataCadastro = req.body.dataCadastro;
+
+        produto.save(function(err) {
+            
+            if(err) res.send(err);
+
+            res.json({ message: 'Usuário Atualizado!' });
+        });
+    });
+
+
+    // const produto = await Produto.findById(req.params.id);
+
+    // res.send({ produto });
 };
 
 exports.deletar = async (req, res) => {
     await Produto.findByIdAndRemove(req.params.id);
 
-    //res.send();
-    res.redirect('/produtos');
+    res.send({ message: id + 'Deletado com sucesso!' });
+    //res.redirect('/produtos');
 };

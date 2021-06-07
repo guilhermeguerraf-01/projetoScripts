@@ -8,6 +8,7 @@ var ProdutoSchema = new Schema({
 	},
 	codigo: {
 		type: String,
+		unique: true,
 		required: true
 	},
 	precoVenda: {
@@ -18,10 +19,6 @@ var ProdutoSchema = new Schema({
 		type: Date,
 		required: true
 	}
-});
-
-ProdutoSchema.virtual('url').get(function () {
-	return '/produtos/' + this._id;
 });
 
 const Produto = mongoose.model('Produto', ProdutoSchema);
