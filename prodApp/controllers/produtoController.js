@@ -62,6 +62,6 @@ exports.atualizar = async (req, res) => {
 exports.deletar = async (req, res) => {
     await Produto.findByIdAndRemove(req.params.id);
 
-    res.send({ message: id + 'Deletado com sucesso!' });
+    res.send({ message: 'Deletado com sucesso!' });
     //res.redirect('/produtos');
 };
