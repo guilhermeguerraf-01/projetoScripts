@@ -12,6 +12,7 @@ router.post('/', produtoController.cadastrar);
 
 router.put('/:id', produtoController.atualizar);
 
-router.delete('/:id', produtoController.deletar);
+router.post('/:id/deletar', produtoController.deletar);
+router.get('/:id/deletar', produtoController.deletar);
 
 module.exports = router;
