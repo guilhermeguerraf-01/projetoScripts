@@ -24,16 +24,13 @@ exports.cadastrar = async (req, res) => {
         dataCadastro: req.body.dataCadastro
     });
 
-    produto
-        .save(produto)
-        .then(data => {
-            res.send(data); 
-        })
-        .catch(err => {
-            res.status(500).send(err);
-        });
+    produto.save(function (err) {
+        if (err) res.send(err);
+        res.redirect('/produtos');
+    });
+        
     //return res.send({ produto });
-    res.redirect('/produtos');
+    //res.redirect('/produtos');
 };
 
 exports.atualizar = async (req, res) => {
