@@ -37,7 +37,7 @@ exports.cadastrar = async (req, res) => {
 
 exports.atualizar = async (req, res) => {
 
-    Produto.findById(req.params.usuario_id, function(err, produto) {
+    Produto.findById(req.params.id, function(err, produto) {
         if(err) res.send(err);
         
         produto.nome = req.body.nome;
