@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    .container
+
+        form.form-cadastroProduto(method='post' action='/produtos/'+produto.id+'/atualizar')
+            label.form-label(for='nome') Nome do produto:
+            input#nome.form-input(type='text' name='nome' required='true' value=produto.nome)
+
+            label.form-label(for='codigo') C&oacute;digo Interno:
+            input#codigo.form-input(type='text' oninput="this.value=this.value.slice(0,this.maxLength)" maxlength='4' name='codigo' required='true' value=produto.codigo)
+            
+            label.form-label(for='precoVenda') Preço de venda:
+            input#precoVenda.form-input(type="text" name='precoVenda' required='true' value=produto.precoVenda)
+            
+            label.form-label(for="dataCadastro") Data de cadastro:
+            input#dataCadastro.form-input(type="date" name='dataCadastro' required='true' value=produto.dataCadastro)
+
+            input#botao-gravar.form-botao-gravar(type='submit' value='Salvar')
