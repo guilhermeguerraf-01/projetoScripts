@@ -36,27 +36,19 @@ exports.cadastrar = async (req, res) => {
 };
 
 exports.atualizar = async (req, res) => {
-    Produto.findById(req.params.id, function(err, produto) {
-        
-        if(err) res.send(TypeError);
 
+    Produto.findById(req.params.usuario_id, function(error, produto) {
+        if(error) res.send(error);
+        
         produto.nome = req.body.nome;
         produto.codigo = req.body.codigo;
         produto.precoVenda = req.body.precoVenda;
         produto.dataCadastro = req.body.dataCadastro;
 
-        produto.save(function(err) {
-            
-            if(err) res.send(err);
+        await produto.save();
 
-            res.json({ message: 'Usuário Atualizado!' });
-        });
+        res.send({ produto });
     });
-
-
-    // const produto = await Produto.findById(req.params.id);
-
-    // res.send({ produto });
 };
 
 exports.deletar = async (req, res) => {
