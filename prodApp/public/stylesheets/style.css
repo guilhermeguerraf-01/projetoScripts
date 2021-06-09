@@ -295,6 +295,10 @@ body {
     justify-content: space-evenly;
 }
 
+.item-acoes a {
+    text-decoration: none;
+}
+
 .invisivel {
 	display: none;
 }
@@ -460,4 +464,8 @@ body {
 
 .produto-detalhes p {
     margin-bottom: 10px;
+}
+
+.produto-detalhes a {
+    text-decoration: none;
 }
