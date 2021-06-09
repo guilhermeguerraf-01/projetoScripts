@@ -455,15 +455,36 @@ body {
     padding: 30px;
     border-radius: 3px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+    position: relative;
 }
 
-.produto-detalhes h2 {
+.produto-detalhes .produto-nome {
     font-size: 1.5em;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .produto-detalhes p {
-    margin-bottom: 10px;
+    margin: 15px 0;
+}
+
+.produto-texto {
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-bottom: 8px;
+}
+
+.produto-preco {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.produto-detalhes .acoes {
+    display: flex;
+    justify-content: space-evenly;
+    width: 220px;
+    position: absolute;
+    top: 30px;
+    right: 0;
 }
 
 .produto-detalhes a {
